@@ -6,13 +6,13 @@ function resolve (dir) {
 }
 
 //开发环境
-// const ServerUrl = "http://localhost:8000"
+// const ServerUrl = "http://localhost:8001"
 
 // 测试环境
 // const ServerUrl = "http://47.244.129.198"
 
 // 生产环境
-const ServerUrl = "http://allwin6666.com"
+const ServerUrl = "http://47.75.120.33"
 
 module.exports = {
     // 基本路径
@@ -26,6 +26,15 @@ module.exports = {
         //修改文件引入自定义路径
         config.resolve.alias
             .set('~', resolve('src'))
+
+        //忽略的打包文件
+        config.externals({
+            'vue': 'Vue',
+            'vue-router': 'VueRouter',
+            'vuex': 'Vuex',
+            'axios': 'axios',
+            'element-ui': 'ELEMENT',
+        })
     },
     configureWebpack: {
     },

@@ -1,7 +1,7 @@
 <template>
 	<el-row class="container">
 		<el-col :span="24" class="header">
-			<el-col :span="10" class="logo" :class="collapsed?'logo-collapse-width':'logo-width'">
+			<el-col :span="10" class="logo" :class="collapsed?'logo-collapse-width':'logo-width'" >
 				{{collapsed?'':sysName}}
 			</el-col>
 			<el-col :span="10">
@@ -29,12 +29,12 @@
 			</el-col>
 		</el-col>
 		<el-col :span="24" class="main">
-			<aside :class="collapsed?'menu-collapsed':'menu-expanded'">
+			<aside :class="collapsed?'menu-collapsed':'menu-expanded'"  >
 				<!--导航菜单-->
-				<el-menu :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
-					 unique-opened router v-show="!collapsed">
+				<el-menu style="overflow:auto;" :default-active="$route.path" class="el-menu-vertical-demo" @open="handleopen" @close="handleclose" @select="handleselect"
+					 unique-opened router v-show="!collapsed" >
 					<template v-for="(item,index) in Homerouters" v-if="!item.hidden">
-						<el-submenu :index="index+''" v-if="!item.leaf">
+						<el-submenu :index="index+''" v-if="!item.leaf"  >
 							<template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>
 							<el-menu-item v-for="child in item.children" :index="child.path" :key="child.path" v-if="!child.hidden">{{child.name}}</el-menu-item>
 						</el-submenu>
@@ -88,7 +88,7 @@
 	export default {
 		data() {
 			return {
-				sysName:'傲银管理系统',
+				sysName:'三星管理系统',
 				collapsed:false,
 				sysUserName: '',
 				sysUserAvatar: '../assets/img/pichead.jpg',
@@ -213,15 +213,17 @@
 			// console.log("user:",this.user)
 
 			if(this.user.rolecode.toString() === "1000"){
-				this.sysName = "傲银管理后台"
+				this.sysName = "三星管理后台"
 			}else if (this.user.rolecode.toString() === "1001"){
-				this.sysName = "傲银管理后台"
+				this.sysName = "三星管理后台"
+			}else if (this.user.rolecode.toString() === "1005"){
+				this.sysName = "三星财务管理后台"
 			}else if (this.user.rolecode.toString() === "2001"){
-				this.sysName = "傲银商户后台"
+				this.sysName = "三星商户后台"
 			}else if (this.user.rolecode.toString() === "3001"){
-				this.sysName = "傲银代理后台"
+				this.sysName = "三星代理后台"
 			}else if (this.user.rolecode.toString() === "4001"){
-				this.sysName = "傲银码商后台"
+				this.sysName = "三星码商后台"
 			}
 
 
@@ -244,8 +246,8 @@
 		.header {
 			height: 60px;
 			line-height: 60px;
-			background: #20a0ff;
-			color:#fff;
+			background: #64594a;
+			color:black;
 			.userinfo {
 				text-align: right;
 				padding-right: 35px;
@@ -311,10 +313,10 @@
 				.el-menu{
 					height: 100%;
 					width:180px;
-					background-color: #5e7382;
+					background-color: #C7EDCC;
 					.el-menu-item{
 						min-width:180px;
-						background-color: #5e7382;
+						background-color: #C7EDCC;
 					}
 				}
 				.collapsed{

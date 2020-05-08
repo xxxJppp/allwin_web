@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <avue-form ref="form" v-model="obj"
                    :option="option">
             <template slot="menuForm">
@@ -78,6 +79,13 @@
                             row:true,
                         },
                         {
+                            label: "提现手续费",
+                            prop: "fee_rule",
+                            span:12,
+                            readonly:true,
+                            row:true,
+                        },
+                        {
                             label: "提现",
                             prop: "amount",
                             span: 12,
@@ -89,7 +97,7 @@
                                 validator: (rule, value, callback) => {
                                     if (value <= 0) {
                                         callback(new Error('提现金额必须大于0'));
-                                    } else if (value > this.obj.bal - this.obj.cashout_bal) {
+                                    } else if (value > this.obj.bal - this.obj.cashout_bal - this.obj.fee_rule) {
                                         callback(new Error('提现金额不能大于可提余额!'));
                                     } else {
                                         callback();
@@ -289,5 +297,8 @@
     }
 </script>
 
-<style>
+<style >
+    .avue-form__menu{
+        width:500px;
+    }
 </style>

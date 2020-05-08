@@ -26,6 +26,8 @@
             </el-table-column>
             <el-table-column prop="passcode" label="渠道商户号" width="110" sortable align="center">
             </el-table-column>
+            <el-table-column prop="isdayfu_name" label="是否API代付" width="110" sortable align="center">
+            </el-table-column>
             <el-table-column prop="status_name" label="使用状态" width="110" sortable align="center">
             </el-table-column>
             <el-table-column label="操作" width="140" align="center">
@@ -290,7 +292,6 @@
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             this.PayObj.loading= true;
                             this.PayPassObj.types.forEach((item,index) => {
-                                console.log(item.linkid,item.typename+item.name,item.rate)
                                 let listno = this.Pays.pays.indexOf(item.typename + item.name)
                                 if (listno !==-1){
                                     this.PayObj.addlist.insert.push({
@@ -305,7 +306,6 @@
                                 this.$set(this.PayObj.addlist.delete,'id',this.PayPassObj.paypassid)
                                 this.$set(this.PayObj.addlist.delete,'type','0')
                             }
-                            console.log(this.PayObj.addlist.insert)
                             paypasslinktype_add({
                                 data :this.PayObj.addlist,
                                 callback : () => {
@@ -346,7 +346,6 @@
                     },
                     callback : (res) => {
                         res.data.data.forEach((item,index) => {
-                            console.log(item.typename,item.name,item.rate)
                             this.Pays.pays.push(
                                 item.typename + item.name
                             )

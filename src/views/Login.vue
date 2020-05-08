@@ -64,7 +64,6 @@
                 if (value === '') {
                   callback(new Error('请输入验证码'))
                 } else if (value !== this.identifyCode) {
-                  console.log('validateVerifycode:', value)
                   callback(new Error('验证码不正确!'))
                 } else {
                   callback()
@@ -105,6 +104,9 @@
           callback : (res) => {
             this.handleUser(res.data.data)
             this.$router.push({ path: '/dashboard' });
+          },
+          errorcallback : () =>{
+            this.logining = false
           }
         })
       },
@@ -125,7 +127,6 @@
               errorcallback:this.errorcallBackhandleSubmit2
             })
           } else {
-            console.log('error submit!!');
             return false;
           }
         });
@@ -146,7 +147,6 @@
                   this.randomNum(0, this.identifyCodes.length)
                   ]
         }
-        console.log(this.identifyCode)
       }
     },
     mounted() {

@@ -20,11 +20,11 @@
                         size="mini"
                         @click="rowCell(scope.row,scope.index)"
                 >{{scope.row.$cellEdit?'保存':'修改'}}</el-button>
-                <el-button
-                        type="primary"
-                        size="mini"
-                        @click="LinkQrcode(scope.row)"
-                >二维码</el-button>
+<!--                <el-button-->
+<!--                        type="primary"-->
+<!--                        size="mini"-->
+<!--                        @click="LinkQrcode(scope.row)"-->
+<!--                >二维码</el-button>-->
                 <el-button
                         type="danger"
                         size="mini"
@@ -103,7 +103,8 @@
                 cellEdit: false,
                 filter: {
                     name:'',
-                    loginname:''
+                    loginname:'',
+                    userid:""
                 },
                 page: {
                     // pageSizes: [10,20,30],
@@ -142,6 +143,13 @@
                     size:"mini",
                     column:[
                         {
+                            label:'码商ID',
+                            prop:'userid',
+                            minWidth:150,
+                            addVisdiplay:false,
+                            search:true,
+                        },
+                        {
                             label:'名称',
                             prop:'name',
                             minWidth:150,
@@ -155,29 +163,29 @@
                             search:true,
                             cell: true,
                         },
-                        {
-                            label:'码商余额',
-                            prop:'up_bal',
-                            minWidth:110,
-                            addVisdiplay:false,
-                        },
-                        {
-                            label:'可提现余额',
-                            prop:'bal1',
-                            minWidth:110,
-                            addVisdiplay:false,
-                        },
-                        {
-                            label:'利润',
-                            prop:'bal',
-                            minWidth:110,
-                            addVisdiplay:false,
-                        },
+                        // {
+                        //     label:'码商余额',
+                        //     prop:'up_bal',
+                        //     minWidth:110,
+                        //     addVisdiplay:false,
+                        // },
+                        // {
+                        //     label:'可提现余额',
+                        //     prop:'bal1',
+                        //     minWidth:110,
+                        //     addVisdiplay:false,
+                        // },
+                        // {
+                        //     label:'利润',
+                        //     prop:'bal',
+                        //     minWidth:110,
+                        //     addVisdiplay:false,
+                        // },
                         {
                             label:'创建时间',
                             prop:'createtime',
                             minWidth:150,
-                            addVisdiplay:false,
+                            display:false,
                         },
                     ]
                 }
@@ -213,7 +221,6 @@
                     },
                     callback : (res) => {
                         res.data.data.forEach((item,index) => {
-                            console.log(item.typename,item.name,item.rate)
                             this.Pays.pays.push(
                                 item.typename + item.name
                             )
@@ -233,7 +240,6 @@
                         this.$confirm('确认提交吗？', '提示', {}).then(() => {
                             this.PayObj.loading= true;
                             this.PayPassObj.types.forEach((item,index) => {
-                                console.log(item.linkid,item.typename+item.name,item.rate)
                                 let listno = this.Pays.pays.indexOf(item.typename + item.name)
                                 if (listno !==-1){
                                     this.PayObj.addlist.insert.push({
@@ -248,7 +254,6 @@
                                 this.$set(this.PayObj.addlist.delete,'id',this.PayPassObj.userid)
                                 this.$set(this.PayObj.addlist.delete,'type','2')
                             }
-                            console.log(this.PayObj.addlist.insert)
                             paypasslinktype_add({
                                 data :this.PayObj.addlist,
                                 callback : () => {
@@ -325,6 +330,7 @@
             searchChange(params){
                 this.filter.name = params.name
                 this.filter.loginname = params.loginname
+                this.filter.userid = params.userid
                 this.QueryQrcode()
             },
             refreshChange(){
@@ -342,7 +348,9 @@
                         "page_size" : this.page.pageSize,
                         "type" : "3",
                         "name" : this.filter.name,
-                        "loginname" : this.filter.loginname
+                        "loginname" : this.filter.loginname,
+                        "userid":this.filter.userid
+
                     },
                     "callback": (res)=>{
                         this.data=res.data.data

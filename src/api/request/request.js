@@ -4,6 +4,168 @@ import { CoreRequest } from './fetch'
 
 let apiurl = '/client_api'
 
+
+export function addTask(options) {
+  options['url']=apiurl + '/wb/addTask'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function loginForPc(options) {
+  options['url']=apiurl + '/wb/loginForPc'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function updUmark(options) {
+  options['url']=apiurl + '/wb/updUmark'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function getSendList(options) {
+  options['url']=apiurl + '/wb/getSendList'
+  options['method']='get'
+  CoreRequest(options)
+}
+
+export function getTask(options) {
+  options['url']=apiurl + '/wb/getTask'
+  options['method']='get'
+  CoreRequest(options)
+}
+
+export function addGroup(options) {
+  options['url']=apiurl + '/wb/addGroup'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function addWeiboUser(options) {
+  options['url']=apiurl + '/wb/addWeiboUser'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function getGroup(options) {
+  options['url']=apiurl + '/wb/getGroup'
+  options['method']='get'
+  CoreRequest(options)
+}
+
+export function getGroupMember(options) {
+  options['url']=apiurl + '/wb/getGroupMember'
+  options['method']='get'
+  CoreRequest(options)
+}
+
+export function getWeiboUser(options) {
+  options['url']=apiurl + '/wb/getWeiboUser'
+  options['method']='get'
+  CoreRequest(options)
+}
+
+export function updWeiboUser(options) {
+  options['url']=apiurl + '/wb/updWeiboUser'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function delWeiboUser(options) {
+  options['url']=apiurl + '/wb/delWeiboUser'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function getVerCodeForWeibo(options) {
+  options['url']=apiurl + '/wb/getVerCodeForWeibo'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+
+
+export function initOtherDataForWeibo(options) {
+  options['url']=apiurl + '/pay/initOtherDataForWeibo'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+
+export function vercodeLoginForWeibo(options) {
+  options['url']=apiurl + '/wb/vercodeLoginForWeibo'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function getPayPassLinkData(options) {
+  options['url']=apiurl + '/pay/getPayPassLinkData'
+  options['method']='get'
+  CoreRequest(options)
+}
+export function updPayPassLinkData(options) {
+  options['url']=apiurl + '/pay/updPayPassLinkData'
+  options['method']='post'
+  CoreRequest(options)
+}
+export function addPayPassLinkData(options) {
+  options['url']=apiurl + '/pay/addPayPassLinkData'
+  options['method']='post'
+  CoreRequest(options)
+}
+export function getSessionSSS(options) {
+  options['url']=apiurl + '/pay/getSessionSSS'
+  options['method']='post'
+  CoreRequest(options)
+}
+export function delPayPassLinkData(options) {
+  options['url']=apiurl + '/pay/delPayPassLinkData'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function daifuBalQuery(options) {
+  options['url']=apiurl + '/public/daifuBalQuery'
+  options['method']='get'
+  CoreRequest(options)
+}
+
+export function neichong(options) {
+  options['url']=apiurl + '/public/neichong'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function daifuOrderQuery(options) {
+  options['url']=apiurl + '/public/daifuOrderQuery'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function stop_handler(options) {
+    options['url']=apiurl + '/order/stop_handler'
+    options['method']='post'
+    CoreRequest(options)
+}
+
+export function stop_canle_handler(options) {
+    options['url']=apiurl + '/order/stop_canle_handler'
+    options['method']='post'
+    CoreRequest(options)
+}
+
+export function daifuBalTixian(options) {
+  options['url']=apiurl + '/public/daifuBalTixian'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+export function daifuPassList(options) {
+  options['url']=apiurl + '/public/daifuPassList'
+  options['method']='get'
+  CoreRequest(options)
+}
+
 //获取菜单
 export function get_menu(options) {
   options['url']=apiurl + '/public/get_menu'
@@ -317,6 +479,87 @@ export function upd_bal(options) {
 //提现明细查询
 export function cashoutlist_query(options) {
   options['url']= apiurl + '/order/cashoutlist_query'
+  options['method']='get'
+  CoreRequest(options)
+}
+
+
+//提现明细查询
+export function getWhiteList(options) {
+  options['url']= apiurl + '/public/getWhiteList'
+  options['method']='get'
+  CoreRequest(options)
+}
+
+//提现明细查询
+export function delWhiteList(options) {
+  options['url']= apiurl + '/public/delWhiteList'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+//提现明细查询
+export function updWhiteList(options) {
+  options['url']= apiurl + '/public/updWhiteList'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+//提现明细查询
+export function refeshWhiteList(options) {
+  options['url']= apiurl + '/public/refeshWhiteList'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+//提现明细查询
+export function addWhiteList(options) {
+  options['url']= apiurl + '/public/addWhiteList'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+
+//提现明细查询
+export function google_token_url_get(options) {
+  options['url']= apiurl + '/public/google_token_url_get'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+
+//提现明细查询
+export function paypassRulesAdd(options) {
+  options['url']= apiurl + '/pay/paypassRulesAdd'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+//提现明细查询
+export function paypassRulesGet(options) {
+  options['url']= apiurl + '/pay/paypassRulesGet'
+  options['method']='get'
+  CoreRequest(options)
+}
+
+
+//提现明细查询
+export function accCheckok(options) {
+  options['url']= apiurl + '/public/accCheckok'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+//提现明细查询
+export function cashout_daifusb(options) {
+  options['url']= apiurl + '/public/cashout_daifusb'
+  options['method']='post'
+  CoreRequest(options)
+}
+
+//提现明细查询
+export function cashoutlist_df_query(options) {
+  options['url']= apiurl + '/order/cashoutlist_df_query'
   options['method']='get'
   CoreRequest(options)
 }
